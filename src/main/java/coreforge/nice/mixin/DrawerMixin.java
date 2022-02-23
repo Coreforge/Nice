@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(targets = "net.minecraft.client.font.TextRenderer$Drawer")
 public class DrawerMixin {
     int lastChar;
-
+    int secondLastChar;
     @Shadow
     public boolean accept(int i, Style style, int j){ throw new RuntimeException();}
     /*@ModifyArg(method = "accept",at = @At(value = "INVOKE",target = "Lnet/minecraft/client/font/FontStorage;getGlyphRenderer(I)Lnet/minecraft/client/font/GlyphRenderer;"),index = 0)
@@ -32,6 +32,22 @@ public class DrawerMixin {
             accept(i,style,'e');
             accept(i,style,')');
         }
+
+        if(secondLastChar == '4' && lastChar == '2' && j == '0'){
+
+            accept(i,style,' ');
+            accept(i,style,'B');
+            accept(i,style,'l');
+            accept(i,style,'a');
+            accept(i,style,'z');
+            accept(i,style,'e');
+            accept(i,style,' ');
+            accept(i,style,'I');
+            accept(i,style,'t');
+            accept(i,style,'!');
+            accept(i,style,' ');
+        }
+        secondLastChar = lastChar;
         lastChar = j;
     }
 }
