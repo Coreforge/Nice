@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "DrawerMixin"
+    "DrawerMixin",
+    "PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
